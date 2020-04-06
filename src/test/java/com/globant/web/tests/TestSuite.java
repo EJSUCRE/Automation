@@ -13,6 +13,7 @@ public class TestSuite extends BaseTest {
     @AfterMethod
     @Parameters({"url"})
     public void launchHomePage(String url) {
+        driver.getDriver().manage().window().maximize();
         driver.getDriver().get(url);
     }
 

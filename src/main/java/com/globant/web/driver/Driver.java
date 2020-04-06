@@ -33,7 +33,7 @@ public class Driver {
 				driver = new FirefoxDriver();
 				break;
 			case "chrome":
-				System.setProperty("webdriver.chrome.driver", "./src/main/resources/chromedriverMac80");
+				System.setProperty("webdriver.chrome.driver", "./src/main/resources/chromedriver80.exe");
 				driver = new ChromeDriver();
 				break;
 			default:

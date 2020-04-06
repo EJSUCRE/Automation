@@ -1,0 +1,11 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="Suit WorkShop" verbose="1">
+	<test name="TestSuitWorkShop Youtube and Vimeo Play">
+		<parameter name="browser" value="chrome"></parameter>
+		<parameter name="url" value="https://mdbootstrap.com/plugins/jquery/iframe/"></parameter>
+		<classes>
+			<class name="com.globant.web.tests.TestSuitWorkShop"></class>
+		</classes>
+	</test>
+</suite>
