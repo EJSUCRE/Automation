@@ -1,0 +1,13 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="Suit ESPN" verbose="1">
+    <test name="TestSuitEspn">
+        <parameter name="browser" value="firefox"></parameter>
+        <parameter name="url" value="https://www.espn.com/?src=com"></parameter>
+        <parameter name="email" value="Lui_cepeda_909091@gmail.com"></parameter>
+        <parameter name="password" value="Cepeda2311*"></parameter>
+        <classes>
+            <class name="com.globant.web.tests.TestSuitEspn"></class>
+        </classes>
+    </test>
+</suite>

@@ -30,6 +30,7 @@ public class Driver {
 					e.printStackTrace();
 				}
 			case "firefox":
+				System.setProperty("webdriver.gecko.driver", "./src/main/resources/geckodriver64.exe");
 				driver = new FirefoxDriver();
 				break;
 			case "chrome":
