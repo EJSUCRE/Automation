@@ -1,5 +1,6 @@
 package tests;
 
+import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.springframework.context.annotation.Description;
 
@@ -18,7 +19,8 @@ public class LoginAppTest extends BaseMobileTest {
 		log.info("testOfSomething");
 		DashBoardScreen dashBoard = loadDashBoardScreen();
 		LoginScreen login = dashBoard.goToLoginScreen();
-		login.fillInLoginData("email", "password");	
+		login.fillInLoginData("ender.sucre@globant.com", "Test123*");
+		Assert.assertTrue(login.isDisplayed(),"The User is no Log In");
 	}
 
 }
