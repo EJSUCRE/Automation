@@ -1,29 +1,17 @@
 package tests;
 
+import org.springframework.context.annotation.Description;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import org.springframework.context.annotation.Description;
-
 import screens.DashBoardScreen;
 import screens.LoginScreen;
 import util.tests.BaseMobileTest;
 
-public class LoginAppTest extends BaseMobileTest {
+public class DashBoardTest extends BaseMobileTest {
 
-    /**
-     * Verify something.
-     */
-	/*@Description(value = "test of something ID:0001")
-	@Test()
-	public void testOfSomething() {
-		log.info("testOfSomething");
-		DashBoardScreen dashBoard = loadDashBoardScreen();
-		LoginScreen login = dashBoard.goToLoginScreen();
-		login.fillInLoginData("ender.sucre@globant.com", "Test123*");
-		Assert.assertTrue(login.isDisplayed(),"The User is no Log In");
-	}
-    @Description(value = "Test of Log In faile ID:0002")
-    @Test()
+
+    @Description(value = "Test of Log In fail ID:0002")
+    @Test(priority = 1)
     public void testLogInFail() {
         log.info("testLogInFail");
         DashBoardScreen dashBoard = loadDashBoardScreen();
@@ -33,35 +21,35 @@ public class LoginAppTest extends BaseMobileTest {
     }
 
     @Description(value = "Test Map Category ID:0003")
-    @Test()
+    @Test(priority = 2)
     public void testMapCategories() {
         log.info("testMapCategories");
         DashBoardScreen dashBoard = loadDashBoardScreen();
         dashBoard.goToMapTab();
-        Assert.assertTrue(dashBoard.getDisplayResponse(),"The Hotel Category was not found in the List");
+        Assert.assertTrue(dashBoard.getDisplayResponse(), "The Hotel Category was not found in the List");
     }
 
     @Description(value = "Test Map Privacy & Legacy ID:0004")
-    @Test()
+    @Test(priority = 3)
     public void testMapPrivacyAndLegacy() {
         log.info("testMapPrivacyAndLegacy");
         DashBoardScreen dashBoard = loadDashBoardScreen();
         dashBoard.goToMoreOption();
-        Assert.assertTrue(dashBoard.getDisplayMyProfile(),"My Profile option was not found");
-        Assert.assertTrue(dashBoard.getDisplayProperty(),"Property Rules option was not found");
-        Assert.assertTrue(dashBoard.getDisplayLinkToAccount(),"Link to Account option was not found");
-        Assert.assertTrue(dashBoard.getDisplayHelp(),"Help option was not found");
-        Assert.assertTrue(dashBoard.getDisplayPrivacy(),"Privacy & Legal option was not found");
+        Assert.assertTrue(dashBoard.getDisplayMyProfile(), "My Profile option was not found");
+        Assert.assertTrue(dashBoard.getDisplayProperty(), "Property Rules option was not found");
+        Assert.assertTrue(dashBoard.getDisplayLinkToAccount(), "Link to Account option was not found");
+        Assert.assertTrue(dashBoard.getDisplayHelp(), "Help option was not found");
+        Assert.assertTrue(dashBoard.getDisplayPrivacy(), "Privacy & Legal option was not found");
         dashBoard.goToPrivacyAndLegacyTab();
-        Assert.assertTrue(dashBoard.getDisplayPrivacySubOption(),"Privacy & Legal Sub-Option were not found as expected");
-    }*/
+        Assert.assertTrue(dashBoard.getDisplayPrivacySubOption(), "Privacy & Legal Sub-Option were not found as expected");
+    }
 
     @Description(value = "Test Add Plans ID:0005")
-    @Test()
+    @Test(priority = 4)
     public void testAddPlans() {
         log.info("testAddPlans");
         DashBoardScreen dashBoard = loadDashBoardScreen();
         dashBoard.goToAddPlans();
-        Assert.assertTrue(dashBoard.getDisplayReserveDining(),"Reserve Dining was not found");
-}
+        Assert.assertTrue(dashBoard.getDisplayReserveDining(), "Reserve Dining was not found");
+    }
 }

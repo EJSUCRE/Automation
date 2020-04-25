@@ -7,5 +7,6 @@
 	"app": "C:/Disneyland.apk",
 	"automationName": "UiAutomator2",
     "skipServerInstallation": "true",
-	"fullReset": "true","fullReset": "true"
+	"noReset": "false",
+	"fullReset": "true"
 }

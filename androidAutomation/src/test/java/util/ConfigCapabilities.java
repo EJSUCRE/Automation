@@ -26,6 +26,8 @@ public class ConfigCapabilities {
 	private static final String JSON_FILE_PATH = "src/test/resources/mobile_capabilities.json";
 	private static final String APP = "app";
 	private static final String AUTOMATION_NAME = "automationName";
+	private static final String FULL_RESET = "fullReset";
+	private static final String NO_RESET = "noReset";
 	private static JsonParser parser = new JsonParser();
 
 	/**
@@ -55,6 +57,8 @@ public class ConfigCapabilities {
 		capabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION, getJsonDataProperty(PLATFORM_VERSION));
 		capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, getJsonDataProperty(PLATFORM_NAME));
 		capabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME, getJsonDataProperty(AUTOMATION_NAME));
+		capabilities.setCapability(MobileCapabilityType.FULL_RESET, getJsonDataProperty(FULL_RESET));
+		capabilities.setCapability(MobileCapabilityType.NO_RESET, getJsonDataProperty(NO_RESET));
 	}
 
 	/**

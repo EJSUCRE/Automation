@@ -10,9 +10,9 @@ import util.tests.BaseMobileTest;
 
 public class LoginAppTest extends BaseMobileTest {
 
-	/**
-	 * Verify something.
-	 */
+    /**
+     * Verify something.
+     */
 	@Description(value = "test of something ID:0001")
 	@Test()
 	public void testOfSomething() {

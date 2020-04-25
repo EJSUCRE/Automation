@@ -180,12 +180,39 @@ public abstract class BaseScreen implements AlertHandler{
 	 * @author Hans.Marquez
 	 *
 	 * @param element : AndroidElement
-	 * @param sequence: String
 	 */
 	public boolean isElementAvailable(AndroidElement element) {
 		WebDriverWait wait = new WebDriverWait(driver,15);
 		wait.until(ExpectedConditions.visibilityOf(element));
 		return true;
+	}
+
+	/**
+	 * Wrapper for getText event.
+	 *
+	 * @author Hans.Marquez
+	 *
+	 * @param element : AndroidElement
+	 */
+	public String getTextFromElement(AndroidElement element) {
+		WebDriverWait wait = new WebDriverWait(driver,15);
+		wait.until(ExpectedConditions.visibilityOf(element));
+		return element.getText();
+	}
+
+
+	/**
+	 * Wrapper for getText event.
+	 *
+	 * @author Hans.Marquez
+	 *
+	 * @param element : AndroidElement
+	 */
+	public boolean isDisplayed(AndroidElement element) {
+		WebDriverWait wait = new WebDriverWait(driver,15);
+		wait.until(ExpectedConditions.visibilityOf(element));
+		Boolean flag =element.isDisplayed();
+		return flag;
 	}
 	
 }
