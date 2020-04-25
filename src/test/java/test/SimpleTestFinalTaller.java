@@ -18,41 +18,18 @@ public class SimpleTestFinalTaller {
 
     @DataProvider(name = "ids")
     public Object[][] inputData() {
-        return new Object[][] {{"200"}, {"201"}};
+        return new Object[][]{{"200"}, {"201"}};
     }
 
     @BeforeMethod
     @Parameters({"uri"})
-    public void test(String uri){
+    public void test(String uri) {
         steps = new UsersFinalTaller(uri);
-
-       /* users = new ArrayList();
-
-       UserPojoFinalTaller carlos = UserPojoFinalTaller.builder()
-        .first_name("Chapo")
-        .last_name("Guzman")
-        .email("hoyoEnUno@gmail.com")
-        .country("Mexico")
-        .active(true)
-        .telephone("2452345234532")
-        .job_title("Minero")
-        .build();
-
-        User carla = new User("carla",
-                "pondrea",
-                "lasdffuidsa@p.com",
-                "Colombia",
-                "3452345",
-                true,
-                "Java  dev");
-
-        users.add(carlos);
-        users.add(carla);*/
     }
 
 
     @Test
-    public void getUsersTestAll(){
+    public void getUsersTestAll() {
         steps.getUsersAPIEndpoint();
         steps.getUsers();
         steps.isStatusCode(200);
@@ -60,7 +37,7 @@ public class SimpleTestFinalTaller {
     }
 
     @Test
-    public void getUserTestById(){
+    public void getUserTestById() {
         steps.getUsersAPIEndpoint();
         steps.getUser("8");
         steps.isStatusCode(200);
@@ -68,9 +45,9 @@ public class SimpleTestFinalTaller {
     }
 
     @Test
-    public void putTestById(){
-        String newNote="20";
-        String newApproved="false";
+    public void putTestById() {
+        String newNote = "20";
+        String newApproved = "false";
         steps.getUsersAPIEndpoint();
         steps.updateUserFinalNote("8", newNote);
         steps.updateUserApproved("8", Boolean.parseBoolean(newApproved));
