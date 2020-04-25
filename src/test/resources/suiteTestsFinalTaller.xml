@@ -1,0 +1,10 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="Final Taller test suite" verbose="1">
+	<parameter name="uri" value="http://5ea09685eea7760016a91eea.mockapi.io"/>
+	<test name="Final Taller run">
+		<classes>
+			<class name="test.SimpleTestFinalTaller"/>
+		</classes>
+	</test>
+</suite>
