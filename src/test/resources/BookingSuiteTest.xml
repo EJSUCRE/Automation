@@ -1,0 +1,16 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="Examen Final - Booking Search" verbose="1">
+	<listeners>
+		<listener class-name="com.globant.web.listeners.Listener"/>
+	</listeners>
+
+	<parameter name="browser" value="chrome"/>
+	<parameter name="url" value="https://www.booking.com/index.es.html"/>
+
+	<test name="Search Booking">
+		<classes>
+			<class name="com.globant.web.tests.BookingTest"/>
+		</classes>
+	</test>
+</suite>
