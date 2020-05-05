@@ -28,7 +28,7 @@ public class BookingBasePage {
      */
     public BookingBasePage(WebDriver pDriver) {
         PageFactory.initElements(pDriver, this);
-        wait = new WebDriverWait(pDriver, 20);
+        wait = new WebDriverWait(pDriver, 30);
         driver = pDriver;
     }
 
@@ -101,7 +101,7 @@ public class BookingBasePage {
      *
      * @param element : WebElement
      */
-    public String getText(WebElement element){
+    public String getText(WebElement element) {
         return element.getText();
     }
 
@@ -110,7 +110,7 @@ public class BookingBasePage {
      *
      * @param element : String
      */
-    public void clickByTextElement(String element){
+    public void clickByTextElement(String element) {
         WebElement element1 = getDriver().findElement(By.cssSelector(element));
         element1.click();
     }
@@ -120,7 +120,7 @@ public class BookingBasePage {
      *
      * @param element : Webelement
      */
-    public void dropDownElement(String element, String age){
+    public void dropDownElement(String element, String age) {
         Select ageDropdown = new Select(getDriver().findElement(By.cssSelector(element)));
         ageDropdown.selectByValue(age);
     }
@@ -130,7 +130,7 @@ public class BookingBasePage {
      *
      * @param element : Webelement
      */
-    public void dropDownByElement(WebElement element, String value){
+    public void dropDownByElement(WebElement element, String value) {
         Select valueDropdown = new Select(element);
         valueDropdown.selectByValue(value);
     }
@@ -140,7 +140,7 @@ public class BookingBasePage {
      *
      * @param element : Webelement
      */
-    public void scrollDown(WebElement element){
+    public void scrollDown(WebElement element) {
         JavascriptExecutor js = (JavascriptExecutor) getDriver();
         js.executeScript("arguments[0].scrollIntoView();", element);
 
@@ -151,8 +151,8 @@ public class BookingBasePage {
      *
      * @param element : Webelement
      */
-    public boolean isDisplayed(WebElement element){
-      return element.isDisplayed();
+    public boolean isDisplayed(WebElement element) {
+        return element.isDisplayed();
     }
 
 }

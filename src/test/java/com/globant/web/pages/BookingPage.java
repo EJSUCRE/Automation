@@ -13,8 +13,6 @@ public class BookingPage extends BookingBasePage {
 
     /**
      * Attributes to save information for validation process
-     *
-     *
      */
     private String nameHotel;
     private String scoreHotel;
@@ -26,8 +24,6 @@ public class BookingPage extends BookingBasePage {
 
     /**
      * Elements Locator.
-     *
-     *
      */
     @FindBy(css = "span[class=\"xpb__link selected\"]")
     private WebElement sleepButton;
@@ -104,39 +100,44 @@ public class BookingPage extends BookingBasePage {
     @FindBy(css = "div[class=\"hprt-reservation-cta\"]")
     private WebElement reserveButtonTwo;
 
-    @FindBy(css = "button[title=\"Cerrar\"]")
-    private WebElement closePopUp;
-
-    @FindBy(id="lastname")
+    @FindBy(id = "lastname")
     private WebElement lastName;
 
-    @FindBy(id="email")
+    @FindBy(id = "email")
     private WebElement email;
 
-    @FindBy(id="email_confirm")
+    @FindBy(id = "email_confirm")
     private WebElement emailConfirm;
 
     @FindBy(css = ".submit_holder_button ")
     private WebElement continueButton;
 
-    @FindBy(id="phone")
+    @FindBy(id = "phone")
     private WebElement phoneTextBox;
 
-    @FindBy(id="cc_type")
-    private  WebElement ccType;
+    @FindBy(id = "cc_type")
+    private WebElement ccType;
 
-    @FindBy(id="cc_number")
-    private  WebElement tdcNumberBox;
+    @FindBy(id = "cc_number")
+    private WebElement tdcNumberBox;
 
-    @FindBy(id="cc_cvc")
-    private  WebElement ccCvcBox;
+    @FindBy(id = "cc_cvc")
+    private WebElement ccCvcBox;
 
     @FindBy(css = "div[class=\"book-form-field-value\"]")
     private List<WebElement> userInfotmation;
 
     @FindBy(css = "div[class=\"bp_sidebar_content_block__li_content\"]")
-    private  List<WebElement> reserveInformation;
+    private List<WebElement> reserveInformation;
 
+    @FindBy(css = "div[id=\"ajaxsrwrap\"]")
+    private List<WebElement> banner;
+
+    @FindBy(css = "label[class=\"bp_rlu_checkbox__label\"]")
+    private WebElement checkBoxPopUp;
+
+    @FindBy(css = "div>span[class=\"modal-mask-closeBtn bp_rlu_footer_close\"]")
+    private WebElement closeLabelPopUp;
 
 
     /**
@@ -155,7 +156,7 @@ public class BookingPage extends BookingBasePage {
      *
      * @param city : String
      */
-    public void searchBooking(String city) throws InterruptedException {
+    public void searchBooking(String city) {
         waitElementVisibility(sleepButton);
         clickElement(sleepButton);
         waitElementVisibility(destinationTexBox);
@@ -173,7 +174,8 @@ public class BookingPage extends BookingBasePage {
         scrollDown(fiveStarSort);
         waitElementClick(fiveStarSort);
         clickElement(fiveStarSort);
-        Thread.sleep(5000);
+        getDriver().navigate().refresh();
+        waitElementVisibility(banner.get(0));
     }
 
     /**
@@ -204,8 +206,6 @@ public class BookingPage extends BookingBasePage {
 
     /**
      * Choose amount of adults to teh reservation.
-     *
-     *
      */
     public void chooseAmountOfAdult() {
         if (getText(amountOfPerson.get(0)).equals("3")) {
@@ -217,8 +217,6 @@ public class BookingPage extends BookingBasePage {
 
     /**
      * Choose amount of child to teh reservation.
-     *
-     *
      */
     public void chooseAmountOfChild() {
         if (getText(amountOfPerson.get(1)).equals("1")) {
@@ -230,8 +228,6 @@ public class BookingPage extends BookingBasePage {
 
     /**
      * Choose age for the child
-     *
-     *
      */
     public void chooseAgeChild() {
         dropDownElement(".sb-group__children__field > select", "9");
@@ -239,8 +235,6 @@ public class BookingPage extends BookingBasePage {
 
     /**
      * Validate the hotel name is displayed
-     *
-     *
      */
     public boolean bookingOptionValidationName() {
         return isDisplayed(hotelListName.get(1));
@@ -248,8 +242,6 @@ public class BookingPage extends BookingBasePage {
 
     /**
      * Validate the hotel score is displayed
-     *
-     *
      */
     public boolean bookingOptionValidationScore() {
         return isDisplayed(scoreListHotel.get(1));
@@ -257,8 +249,6 @@ public class BookingPage extends BookingBasePage {
 
     /**
      * Validate the hotel price is displayed
-     *
-     *
      */
     public boolean bookingOptionValidationPrice() {
         return isDisplayed(pricesListHotel.get(1));
@@ -266,11 +256,9 @@ public class BookingPage extends BookingBasePage {
 
     /**
      * Select the hotel and get the infotmation Name, Score and Price
-     *
-     *
      */
     public void chooseHotelAndGetInfo() {
-        nameHotel = "Hotel "+getText(hotelListName.get(1));
+        nameHotel = "Hotel " + getText(hotelListName.get(1));
         scoreHotel = getText(scoreListHotel.get(1));
         priceHotel = getText(pricesListHotel.get(1));
         log.info(nameHotel + " " + scoreHotel + " " + priceHotel);
@@ -280,10 +268,8 @@ public class BookingPage extends BookingBasePage {
 
     /**
      * Switch the driver to the new browser tab
-     *
-     *
      */
-    public void switchNewTab() throws InterruptedException {
+    public void switchNewTab() {
         String currentHandle = getDriver().getWindowHandle();
         Set<String> handles = getDriver().getWindowHandles();
         for (String actual : handles) {
@@ -297,8 +283,6 @@ public class BookingPage extends BookingBasePage {
 
     /**
      * Get the hotel's information in the new tab opened Name, Score and Price
-     *
-     *
      */
     public void getHotelInformationSecondTab() {
 
@@ -311,160 +295,150 @@ public class BookingPage extends BookingBasePage {
         waitElementVisibility(newPriceTab2.get(0));
         newPriceHotel = getText(newPriceTab2.get(0));
 
-        log.info(newNameHotel+" "+newScoreHotel+" "+newPriceHotel);
+        log.info(newNameHotel + " " + newScoreHotel + " " + newPriceHotel);
     }
 
     /**
      * Validate the Hotel's name between the first and second page
-     *
-     *
      */
-    public boolean hotelNamesValidator(){
+    public boolean hotelNamesValidator() {
 
-        if (nameHotel.equals(newNameHotel)){
+        if (nameHotel.equals(newNameHotel)) {
             return true;
-        }else {
+        } else {
             return false;
         }
     }
 
     /**
      * Validate the Hotel's score between the first and second page
-     *
-     *
      */
-    public boolean hotelScoresValidator(){
+    public boolean hotelScoresValidator() {
 
-        if (scoreHotel.equals(newScoreHotel)){
+        if (scoreHotel.equals(newScoreHotel)) {
             return true;
-        }else {
+        } else {
             return false;
         }
     }
 
     /**
      * Validate the Hotel's price between the first and second page
-     *
-     *
      */
-    public boolean hotelPricesValidator(){
+    public boolean hotelPricesValidator() {
 
-        if (priceHotel.equals(newPriceHotel)){
+        if (priceHotel.equals(newPriceHotel)) {
             return true;
-        }else {
+        } else {
             return false;
         }
     }
 
     /**
      * Validate that the CheckIn date is displayed
-     *
      */
-    public boolean checkInValidator(){
-        if(isDisplayed(checkInDateTab2)==true){
+    public boolean checkInValidator() {
+        if (isDisplayed(checkInDateTab2) == true) {
             return true;
-        }else {
+        } else {
             return false;
         }
     }
 
     /**
      * Validate that the CheckOut date is displayed
-     *
      */
-    public boolean checkOutValidator(){
-        if(isDisplayed(checkOutDateTab2)==true){
+    public boolean checkOutValidator() {
+        if (isDisplayed(checkOutDateTab2) == true) {
             return true;
-        }else {
+        } else {
             return false;
         }
     }
 
     /**
      * Validate that the Amount of person in correct
-     *
      */
-    public boolean mountPersonValidator(){
-        if (getText(textAmountPersonValidator.get(0)).equals("14 noches, 3 adultos, 1 niño")){
+    public boolean mountPersonValidator() {
+        if (getText(textAmountPersonValidator.get(0)).equals("14 noches, 3 adultos, 1 niño")) {
             return true;
-        }else {
+        } else {
             return false;
         }
     }
 
     /**
      * Reservation Action
-     *
      */
-    public void reserveOption(){
+    public void reserveOption() {
         clickElement(reserveButtonOne.get(1));
-        dropDownByElement(dropDewnRooms.get(0),"1");
+        dropDownByElement(dropDewnRooms.get(0), "1");
+        waitElementVisibility(reserveButtonTwo);
         waitElementClick(reserveButtonTwo);
         clickElement(reserveButtonTwo);
-        waitElementClick(closePopUp);
-        clickElement(closePopUp);
+        waitElementClick(checkBoxPopUp);
+        clickElement(checkBoxPopUp);
+        clickElement(closeLabelPopUp);
     }
 
     /**
      * Fill Reservation Information
      *
-     * @param name : String
-     * @param emailText : String
+     * @param name        : String
+     * @param emailText   : String
      * @param phoneNumber : String
      */
-    public void fillTheInformation(String name, String emailText,String phoneNumber){
+    public void fillTheInformation(String name, String emailText, String phoneNumber) {
         waitElementVisibility(lastName);
-        typeText(lastName,name);
-        typeText(email,emailText);
-        typeText(emailConfirm,emailText);
+        typeText(lastName, name);
+        waitElementVisibility(email);
+        typeText(email, emailText);
+        waitElementVisibility(emailConfirm);
+        typeText(emailConfirm, emailText);
         scrollDown(continueButton);
         clickElement(continueButton);
-        waitElementClick(closePopUp);
-        clickElement(closePopUp);
         waitElementVisibility(phoneTextBox);
-        typeText(phoneTextBox,phoneNumber);
-        dropDownByElement(ccType,"Visa");
-        typeText(tdcNumberBox,"4594186367022176");
-        typeText(ccCvcBox,"007");
+        typeText(phoneTextBox, phoneNumber);
+        waitElementVisibility(ccType);
+        dropDownByElement(ccType, "Visa");
+        waitElementVisibility(tdcNumberBox);
+        typeText(tdcNumberBox, "4594186367022176");
+        waitElementVisibility(ccCvcBox);
+        typeText(ccCvcBox, "007");
     }
 
     /**
      * Reservation name Validation
-     *
      */
-    public String getNameForm(){
-    return getText(userInfotmation.get(0));
+    public String getNameForm() {
+        return getText(userInfotmation.get(0));
     }
 
     /**
      * Reservation email Validation
-     *
      */
-    public String getEmailForm(){
+    public String getEmailForm() {
         return getText(userInfotmation.get(1));
     }
 
     /**
      * Reservation CheckIn date Validation
-     *
      */
-    public Boolean lastCheckInValidator(){
+    public Boolean lastCheckInValidator() {
         return isDisplayed(reserveInformation.get(0));
     }
 
     /**
      * Reservation CheckOut date Validation
-     *
      */
-    public Boolean lastCheckOutValidator(){
+    public Boolean lastCheckOutValidator() {
         return isDisplayed(reserveInformation.get(1));
     }
 
     /**
      * Reservation amount of persons Validation
-     *
      */
-    public Boolean lastCheckPersonsValidator(){
+    public Boolean lastCheckPersonsValidator() {
         return isDisplayed(reserveInformation.get(3));
     }
 

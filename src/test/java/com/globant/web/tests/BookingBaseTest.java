@@ -28,10 +28,10 @@ public class BookingBaseTest {
         Home = new BookingPage(driver.getDriver(), url);
     }
 
-	@AfterTest(alwaysRun=true)
-	public void afterTest() {
-		Home.dispose();
-	}
+    @AfterTest(alwaysRun = true)
+    public void afterTest() {
+        Home.dispose();
+    }
 
     /**
      * Get the home page.
